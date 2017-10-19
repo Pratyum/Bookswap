@@ -20,6 +20,8 @@
     "react-native-fbsdk": "^0.6.3",
     "react-native-firebase": "^3.0.3",
     "react-native-firebase-auth": "^1.0.1",
+    "react-native-gifted-chat": "^0.2.9",
+    "react-native-gifted-messenger": "^0.1.4",
     "react-native-google-sign-in": "0.0.16",
     "react-native-swipe-cards": "^0.1.0",
     "react-navigation": "^1.0.0-beta.13"

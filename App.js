@@ -25,6 +25,7 @@ import Swiper from 'react-native-deck-swiper';
 import SwipeCards from './components/SwipeCards';
 import CameraScreen from './components/CameraScreen';
 import ProfilePage from './components/Profile';
+import MessageContainer from './components/MessageContainer';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -67,7 +68,7 @@ export default class App extends Component {
         var items = [];
         snap.forEach((child) => {
           items.push({
-            title: child.val().title,
+            title: child.val().email,
             _key: child.key
           });
         });
@@ -81,33 +82,41 @@ export default class App extends Component {
       });
     }    
 
+    // componentDidMount() {
+    //   this.listenForItems(this.itemsRef);
+    // }
+
     componentDidMount() {
-      this.listenForItems(this.itemsRef);
+      this.listenForItems(this.usersRef);
     }
 
     render() {
 
-      return (
-        <ProfilePage/>
-      )
+      // return (
+      //   <ProfilePage/>
+      // )
 
 
       // return (
       //   <CameraScreen/>
+      // )
+
+      // return (
+      //   <MessageContainer/>
       // )
       
       return (
         <LoginForm/>
       )
 
-      return (
-        <View style={styles.container}>
-          <SwipeCards data={this.state.items} 
-                      onSwipeLeft={this.onSwipeLeft.bind(this)}
-                      onSwipeRight={this.onSwipeRight.bind(this)}/>
-          <ActionButton onPress={this._addItem.bind(this)} title="Add" />          
-        </View>
-      )
+      // return (
+      //   <View style={styles.container}>
+      //     <SwipeCards data={this.state.items} 
+      //                 onSwipeLeft={this.onSwipeLeft.bind(this)}
+      //                 onSwipeRight={this.onSwipeRight.bind(this)}/>
+      //     <ActionButton onPress={this._addItem.bind(this)} title="Add" />          
+      //   </View>
+      // )
 
       return (
         <View style={styles.container}>
@@ -141,7 +150,7 @@ export default class App extends Component {
     }
   
     _renderItem(item) {
-  
+      console.log(item);
       const onPress = () => {
         AlertIOS.alert(
           'Complete',

@@ -12,6 +12,8 @@ import {
     StackNavigator,
 } from 'react-navigation';
 import SwipeCards from './SwipeCards';  
+import MessageContainer from './MessageContainer';
+import ChatList from './ChatList';
 
 
 export default class LoginForm extends Component {
@@ -36,8 +38,10 @@ export default class LoginForm extends Component {
                         let varToPush = {}
                         varToPush[user.uid] ={name:user.displayName,email:user.email,interested:{title:"testing"}};
                         rootRef.child('users').update(varToPush).then((result)=>{
+                            rootRef.child('users').child(user.uid).child('messages').push({_id:"1234",user:{_id:'help',name:'Help Bot'},text:'Please try me'});
                             this.setState({ error: '', loading: false ,isLoggedIn:true});
-                        })  ;
+                        });
+
                 })
                     .catch(() => {
                         this.setState({ error: 'Authentication failed.', loading: false });
@@ -113,7 +117,7 @@ export default class LoginForm extends Component {
     
     render() {
         if(this.state.isLoggedIn){
-            return <SwipeCards/>
+            return <MessageContainer/>
         }else{
             return (
                 <View style={{flex:1,top:30}}>

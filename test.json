@@ -1,0 +1,10 @@
+{
+    _id: 1,
+    text: 'Hello developer',
+    createdAt: new Date(),
+    user: {
+    _id: '3abc',
+    name: 'React Native',
+    avatar: 'https://facebook.github.io/react/img/logo_og.png',
+    },
+}
